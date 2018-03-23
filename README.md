@@ -1,4 +1,4 @@
-Users menegment center
+User management center
 ==========================
 
 This repo is fork from __dreamfactorysoftware/angular-sdk__ contains new user registration, user edit, and CRUD for related tables.
