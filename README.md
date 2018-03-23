@@ -1,13 +1,9 @@
-Address Book for AngularJS
+Users menegment center
 ==========================
 
-This repo contains a sample address book application for AngularJS that demonstrates how to use the DreamFactory REST API. It includes new user registration, user login, and CRUD for related tables.
+This repo is fork from __dreamfactorysoftware/angular-sdk__ contains new user registration, user edit, and CRUD for related tables.
 
-#Getting a DreamFactory instance
-
-To download and install DreamFactory, follow the instructions [here](http://wiki.dreamfactory.com/DreamFactory/Installation). Alternatively, you can create a [free hosted developer account](http://www.dreamfactory.com) at www.dreamfactory.com if you don't want to install DreamFactory locally.
-
-#Configuring your DreamFactory instance to run the app
+#Configuring DreamFactory
 
 - Enable [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) for development purposes.
     - In the admin console, navigate to the Config tab and click on CORS in the left sidebar.
@@ -33,30 +29,24 @@ To download and install DreamFactory, follow the instructions [here](http://wiki
     - Make sure Open Reg Email Service Id is blank, so that new users can register without email confirmation.
     - Save changes.
 
-- Make sure you have a SQL database service named 'db'. Most DreamFactory instances have a default 'db' service for SQLite. You can add one by going to the Services tab in the admin console and creating a new SQLite service. Make sure you set the name to 'db'.
+    - Make sure you have a SQL database service named 'db'. Most DreamFactory instances have a default 'db' service for SQLite. You can add one by going to the Services tab in the admin console and creating a new SQLite service. Make sure you set the name to 'db'.
 
-- Import the package file for the app.
-    - From the Apps tab in the admin console, click Import and click 'Address Book for AngularJS' in the list of sample apps. The Address Book package contains the application description, source code, schemas, and sample data.
+    - From the Apps tab in the admin console, click Import
     - Leave storage service and folder blank. It will use the default local file service named 'files'.
     - Click the Import button. If successful, your app will appear on the Apps tab. You may have to refresh the page to see your new app in the list.
 
-- Edit your app API key and instance URL
+    - Edit your app API key and instance URL
     - Use the file manager to edit app.js and set APP_API_KEY to the key for your new app. The API key is shown on the app details in the Apps tab of the admin console. Set INSTANCE_URL to empty.
 
-- Make your app files public.
+    - Make your app files public.
     - Figure out where your app files are stored. If you used the default storage settings to import the app, it'll be the default local file service named 'files'.
     - Go to the Files tab in the admin console. Find your file service. Double click and find the folder for your app, e.g., 'AddressBookForAngularJS'.
     - Go to the Services tab in the admin console and click the 'files' service. Click the Config tab and add the app folder name 'AddressBookForAngularJS' as a public path. Now select the relevant container from the Container drop down. If you used the default storage settings to import the app then select "local" from the drop down list. Save your changes.
 
-#Running the Address Book app
+#INFO
 
-You can launch the app from the Apps tab in the admin console.
-
-When the app starts up you can register a new user, or log in as an existing user. Currently the app does not support registering and logging in admin users.
-
-#Example API calls
-
-The DreamFactory Address Book for AngularJS uses $resource and $http to make API calls. The code has been organized in a modular fashion. Hence every module is composed of its own JS, html and css file. Every module has a resource factory defined to interact with DreamFactory API.
+    - Currently the app does not support registering and logging in admin users.
+    - AngularJS uses $resource and $http to make API calls. The code has been organized in a modular fashion. Hence every module is composed of its own JS, html and css file. Every module has a resource factory defined to interact with DreamFactory API.
  
  The general form of a DreamFactory REST API call is:
 
@@ -169,7 +159,6 @@ angular.module('your-app', [ 'ngResource' ])
 
 ##Example of login and registration
 
-
 Recommened approach is to create a service which handles login and registration. This service will take care of handling the response after api calls and storing session token. Example:
 
 ```javascript
@@ -219,8 +208,8 @@ angular.module('your-app', [ 'ngCookies' ])
     }
 ])
 ```
-The API request will return a session token when the (optional) login=true parameter is appended to the register url. So with this parameter appended, the new registered user doesn't have to login to get a session token. And then from your view controller these methods can be called which returns a promise object. Upon success you can redirect them to application dashboard.
 
+The API request will return a session token when the (optional) login=true parameter is appended to the register url. So with this parameter appended, the new registered user doesn't have to login to get a session token. And then from your view controller these methods can be called which returns a promise object. Upon success you can redirect them to application dashboard.
 
 ##Example of fetching records
 
@@ -354,5 +343,3 @@ $http.delete('/api/v2/table/contact', {
 #Additional Resources
 
 More detailed information on the DreamFactory REST API is available [here](http://wiki.dreamfactory.com/DreamFactory/API).
-
-The live API documentation included in the admin console is a great way to learn how the DreamFactory REST API works.
